@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InterPals Profile Viewer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>InterPals Profile Viewer</h1>
+      <p class="subtitle">Filter by age and continent, then view matching profiles</p>
+    </header>
+
+    <section class="card">
+      <h2>Age filter</h2>
+      <div class="row">
+        <label>
+          Min
+          <input id="ageMin" type="number" min="18" max="110" value="25" />
+        </label>
+        <label>
+          Max
+          <input id="ageMax" type="number" min="18" max="110" value="25" />
+        </label>
+      </div>
+      <p class="hint">Profiles are only viewed for users 18 or older.</p>
+    </section>
+
+    <section class="card">
+      <h2>Who to find</h2>
+      <div class="row">
+        <label class="checkbox">
+          <input id="sexMale" type="checkbox" checked />
+          Male
+        </label>
+        <label class="checkbox">
+          <input id="sexFemale" type="checkbox" />
+          Female
+        </label>
+      </div>
+      <label class="checkbox">
+        <input id="onlineOnly" type="checkbox" />
+        Online only
+      </label>
+      <label>
+        Keywords
+        <input id="keywords" type="text" placeholder="travel, music…" />
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>Continents</h2>
+      <p class="hint">Leave empty to search all continents. Examples: Europe, Africa, Asia.</p>
+      <input id="continentSearch" type="search" placeholder="Search continents…" />
+      <div id="continents" class="country-list"></div>
+      <p id="continentCount" class="hint">All continents</p>
+    </section>
+
+    <section class="card">
+      <h2>Viewer limits</h2>
+      <div class="row">
+        <label>
+          Max profiles
+          <input id="maxMessages" type="number" min="1" value="50" />
+        </label>
+        <label>
+          Delay (sec)
+          <input id="delaySeconds" type="number" min="5" max="300" value="15" />
+        </label>
+      </div>
+      <label class="checkbox">
+        <input id="skipMessaged" type="checkbox" checked />
+        Skip users I already viewed
+      </label>
+      <label class="checkbox">
+        <input id="filterOnPage" type="checkbox" checked />
+        Hide non-matching profiles on InterPals pages
+      </label>
+    </section>
+
+    <section class="card status-card">
+      <h2>Status</h2>
+      <p id="statusText">Idle</p>
+      <div class="stats">
+        <span>Viewed: <strong id="openedCount">0</strong></span>
+        <span>Skipped: <strong id="skippedCount">0</strong></span>
+        <span>Errors: <strong id="errorCount">0</strong></span>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button id="startBtn" class="primary">Start</button>
+      <button id="stopBtn" class="danger" disabled>Stop</button>
+    </div>
+
+    <button id="clearHistoryBtn" class="link">Clear viewed-profile history</button>
+
+    <p class="footer">
+      Sign in to <a href="https://www.interpals.net/app/search" target="_blank" rel="noopener">interpals.net</a>
+      and keep that tab open. The bot only views matching profiles — it never sends messages.
+    </p>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

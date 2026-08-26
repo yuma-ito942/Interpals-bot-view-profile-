@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "InterPals Profile Viewer",
+  "version": "1.0.1",
+  "description": "Automatically view matching InterPals profiles. Does not send messages.",
+  "permissions": ["storage", "alarms", "tabs", "scripting"],
+  "host_permissions": ["https://www.interpals.net/*", "https://interpals.net/*"],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.interpals.net/*", "https://interpals.net/*"],
+      "js": ["content/bridge.js", "content/filter.js"],
+      "css": ["content/filter.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/api.js", "lib/html.js", "lib/countries.js"],
+      "matches": ["https://www.interpals.net/*", "https://interpals.net/*"]
+    }
+  ]
+}
