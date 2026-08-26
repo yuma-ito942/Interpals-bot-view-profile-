@@ -84,7 +84,7 @@ function readForm() {
 
   return {
     ageMin: Math.max(18, Number(els.ageMin.value) || 25),
-    ageMax: Math.max(Math.max(18, Number(els.ageMin.value) || 25), Number(els.ageMax.value) || 25),
+    ageMax: Math.max(Math.max(18, Number(els.ageMin.value) || 25), Number(els.ageMax.value) || 70),
     continents,
     continentNames,
     countries: [],
@@ -93,7 +93,7 @@ function readForm() {
     onlineOnly: els.onlineOnly.checked,
     keywords: els.keywords.value.trim(),
     maxMessages: Math.max(1, Number(els.maxMessages.value) || 50),
-    delaySeconds: Math.min(300, Math.max(5, Number(els.delaySeconds.value) || 15)),
+    delaySeconds: Math.min(300, Math.max(5, Number(els.delaySeconds.value) || 45)),
     skipMessaged: els.skipMessaged.checked,
     filterOnPage: els.filterOnPage.checked,
   };

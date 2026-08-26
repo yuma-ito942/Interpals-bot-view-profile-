@@ -142,11 +142,11 @@ async function loadSettings() {
       resolve(
         settings ?? {
           ageMin: 25,
-          ageMax: 25,
+          ageMax: 70,
           countries: [],
           countryNames: [],
-          continents: [],
-          continentNames: [],
+          continents: ["EU"],
+          continentNames: ["Europe"],
           filterOnPage: true,
         }
       );
